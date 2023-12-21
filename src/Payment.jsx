@@ -40,8 +40,6 @@ function Payment() {
 		getClientSecret();
 	}, [basket]);
 
-	console.log("THE SECRET IS >>>", clientSecret);
-
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		setProcessing(true);
@@ -53,7 +51,6 @@ function Payment() {
 				},
 			})
 			.then(({ paymentIntent }) => {
-				console.log(paymentIntent);
 				// paymentIntent = payment confirmation
 
 				db.collection("users")
@@ -107,8 +104,8 @@ function Payment() {
 						<h3>Review items and delivery</h3>
 					</div>
 					<div className="payment__items">
-						{basket.map((item) => (
-							<Checkoutprodact
+						{basket.map((item,i) => (
+							<Checkoutprodact key={i}
 								id={item.id}
 								title={item.title}
 								image={item.image}

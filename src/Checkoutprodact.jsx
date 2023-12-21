@@ -2,12 +2,12 @@ import React from "react";
 import "./Checkoutprodact.css";
 import { useStateValue } from "./StateProvider";
 
-function Checkoutprodact({id,image,title,price,rating}) {
+function Checkoutprodact({ id, image, title, price, rating }) {
 	const [{ basket }, dispatch] = useStateValue();
-	const removeFromBasket= () => {
+	const removeFromBasket = () => {
 		dispatch({
-			type: 'REMOVE_FROM_BASKET',
-			id:id,
+			type: "REMOVE_FROM_BASKET",
+			id: id,
 		});
 	};
 	return (
@@ -23,12 +23,11 @@ function Checkoutprodact({id,image,title,price,rating}) {
 					{Array(rating)
 						.fill()
 						.map((_, i) => (
-							<p>🌟</p>
+							<p key={i}>🌟</p>
 						))}
 				</div>
-			<button onClick={removeFromBasket}>Remove from Basket</button>
+				<button onClick={removeFromBasket}>Remove from Basket</button>
 			</div>
-
 		</div>
 	);
 }
